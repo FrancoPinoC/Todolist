@@ -1,0 +1,18 @@
+language: python
+python:
+  - "2.7"
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - python manage.py migrate
+
+script:
+  - python manage.py test
+
+deploy:
+  provider: heroku
+  api_key: 6844a194-70f2-4863-b728-93f29bb968b3
+  app: hiho-todolist
+  run: "python manage.py migrate"
